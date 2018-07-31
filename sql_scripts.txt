@@ -1,0 +1,31 @@
+
+create database parser;
+
+CREATE USER sqluser IDENTIFIED BY 'sqluserpw';
+
+grant usage on *.* to sqluser@localhost identified by 'sqluserpw';
+
+use parser;
+
+grant all privileges on parser.* to sqluser@localhost;
+
+
+CREATE TABLE logs (
+        id INT NOT NULL AUTO_INCREMENT,
+        DATE   TIMESTAMP,
+        IP VARCHAR(15),
+        REQUEST VARCHAR(100),
+        STATUS INT,
+        USERAGENT VARCHAR(400),
+        PRIMARY KEY (ID)
+    );
+	
+	
+CREATE TABLE blocked_ip (
+		id INT NOT NULL AUTO_INCREMENT,
+        IP VARCHAR(15),
+        REASON VARCHAR(500),
+        PRIMARY KEY (ID)
+    );
+	
+
